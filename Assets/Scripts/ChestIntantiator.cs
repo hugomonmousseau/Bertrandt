@@ -8,31 +8,29 @@ public class ChestIntantiator : MonoBehaviour
 {
     [SerializeField] GameObject chest;
     private ARPlaneManager arPlaneManager;
+    private ARRaycastManager arRaycastManager;
 
     private void Start()
     {
         arPlaneManager = GetComponent<ARPlaneManager>();
-        arPlaneManager.planesChanged += OnPlanesChanged;
+        arRaycastManager = GetComponent<ARRaycastManager>();
     }
 
-    void OnPlanesChanged(ARPlanesChangedEventArgs args)
+    private void Update()
     {
-        if (args.added.Count > 0)
+        if (SceneARManager.INSTANCE.currentChest == null) InstantiateChest();
+        
+    }
+
+    void InstantiateChest()
+    {
+        var _hits = new List<ARRaycastHit>();
+        Vector3 _screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        if(arRaycastManager.Raycast(_screenCenter, _hits, TrackableType.PlaneWithinPolygon))
         {
-            ARPlane plane = args.added[0];
-            //le coffre apparait à 1 metre de l'utilisateur
-            Vector3 position = plane.transform.position + plane.transform.forward * 1.0f;
-            position.y = plane.transform.position.y;
-
-            if (chest != null && SceneARManager.INSTANCE.currentChest == null)
-            {
-                SceneARManager.INSTANCE.currentChest = Instantiate(chest, position, Quaternion.identity);
-            }
+            Vector3 _spawnChestPosition = _hits[0].pose.position;
+            SceneARManager.INSTANCE.currentChest = Instantiate(chest, _spawnChestPosition, Quaternion.identity);
         }
-    }
 
-    void OnDestroy()
-    {
-        arPlaneManager.planesChanged -= OnPlanesChanged;
     }
 }
