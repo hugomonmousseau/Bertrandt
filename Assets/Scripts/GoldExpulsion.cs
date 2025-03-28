@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class GoldExpulsion : MonoBehaviour
 {
-    public List<GameObject> oreCells;
-    public float expelForce = 10f;
+    [SerializeField] List<GameObject> oreCells;
+    [SerializeField] float expelForce = 10f;
+    [SerializeField] GameObject originalOre;
 
+    [ContextMenu("Expel")]
     public void Expel()
     {
-        foreach (GameObject obj in oreCells)
+        //on commence par cacher l'original
+        originalOre.SetActive(false);
+
+        foreach (GameObject _cell in oreCells)
         {
-            if (obj != null)
+            //on les active
+            _cell.SetActive(true);
+
+            //puis on les pousse
+            if (_cell != null)
             {
-                Rigidbody rb = obj.GetComponent<Rigidbody>();
-                if (rb != null)
+                Rigidbody _rb = _cell.GetComponent<Rigidbody>();
+                if (_rb != null)
                 {
-                    Vector3 direction = (obj.transform.position - transform.position).normalized;
-                    rb.AddForce(direction * expelForce, ForceMode.Impulse);
+                    Vector3 direction = (_cell.transform.position - transform.position).normalized;
+                    _rb.AddForce(direction * expelForce + (Vector3.up *expelForce), ForceMode.Impulse);
                 }
             }
         }
