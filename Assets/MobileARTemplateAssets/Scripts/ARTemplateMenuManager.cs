@@ -257,7 +257,7 @@ public class ARTemplateMenuManager : MonoBehaviour
         HideMenu();
         m_PlaneManager.planePrefab = m_DebugPlane;
     }
-
+    
     /// <summary>
     /// See <see cref="MonoBehaviour"/>.
     /// </summary>
