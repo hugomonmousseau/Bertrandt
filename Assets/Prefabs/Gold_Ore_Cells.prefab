@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3141070233629662156}
   - component: {fileID: 3650341216942311154}
   - component: {fileID: 703676335783402985}
+  - component: {fileID: 910701062886697062}
   m_Layer: 0
   m_Name: SM_Gold_Ore4
   m_TagString: Untagged
@@ -134,6 +135,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &910701062886697062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393461368895717511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!1 &4163271388327954354
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +199,7 @@ GameObject:
   - component: {fileID: 5694619134787468538}
   - component: {fileID: 6007942888612641380}
   - component: {fileID: 4587693513103042578}
+  - component: {fileID: 4629628663019347113}
   m_Layer: 0
   m_Name: SM_Gold_Ore1
   m_TagString: Untagged
@@ -306,6 +321,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4629628663019347113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5106161724400471094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!1 &5595759527530577821
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +347,7 @@ GameObject:
   - component: {fileID: 6003433683374307827}
   - component: {fileID: 1328585564389990444}
   - component: {fileID: 5473158957795448318}
+  - component: {fileID: 443186971514964399}
   m_Layer: 0
   m_Name: SM_Gold_Ore7
   m_TagString: Untagged
@@ -440,6 +469,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &443186971514964399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5595759527530577821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!1 &6415090240372588689
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +495,7 @@ GameObject:
   - component: {fileID: 7622215371113285481}
   - component: {fileID: 7184238009334639109}
   - component: {fileID: 3833106506321684047}
+  - component: {fileID: 989118431742234760}
   m_Layer: 0
   m_Name: SM_Gold_Ore5
   m_TagString: Untagged
@@ -574,6 +617,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &989118431742234760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415090240372588689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!1 &6766887381994804731
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +643,7 @@ GameObject:
   - component: {fileID: 8003961565463018584}
   - component: {fileID: 7465438603982675334}
   - component: {fileID: 2578189468222785077}
+  - component: {fileID: 3017902401096267776}
   m_Layer: 0
   m_Name: SM_Gold_Ore2
   m_TagString: Untagged
@@ -708,6 +765,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3017902401096267776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766887381994804731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!1 &7655514103504696680
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +791,7 @@ GameObject:
   - component: {fileID: 6766934670750670670}
   - component: {fileID: 8149271289558532318}
   - component: {fileID: 3658629074062181115}
+  - component: {fileID: 3878643742878936744}
   m_Layer: 0
   m_Name: SM_Gold_Ore3
   m_TagString: Untagged
@@ -842,6 +913,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3878643742878936744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7655514103504696680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
 --- !u!1 &8112589775235758462
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,6 +939,7 @@ GameObject:
   - component: {fileID: 5345420758336353760}
   - component: {fileID: 675882468423527199}
   - component: {fileID: 1667415612532847259}
+  - component: {fileID: 852231457784893306}
   m_Layer: 0
   m_Name: SM_Gold_Ore6
   m_TagString: Untagged
@@ -976,3 +1061,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &852231457784893306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8112589775235758462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455cafa57b363f946a59b017767613e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4

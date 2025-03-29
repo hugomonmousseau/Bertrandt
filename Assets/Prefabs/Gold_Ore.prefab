@@ -54,7 +54,7 @@ MonoBehaviour:
   - {fileID: 4462355171716653783}
   - {fileID: 1476678871076248376}
   - {fileID: 2973399758325947867}
-  expelForce: 1
+  expelForce: 50
   originalOre: {fileID: 4284012210456002451}
 --- !u!1 &4284012210456002451
 GameObject:

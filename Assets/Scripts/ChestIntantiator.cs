@@ -30,6 +30,7 @@ public class ChestIntantiator : MonoBehaviour
         {
             Vector3 _spawnChestPosition = _hits[0].pose.position;
             SceneARManager.INSTANCE.currentChest = Instantiate(chest, _spawnChestPosition, Quaternion.identity);
+            SceneARManager.INSTANCE.DetectedSurface();
         }
 
     }

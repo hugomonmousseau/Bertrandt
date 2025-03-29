@@ -18,17 +18,8 @@ public class GoldExpulsion : MonoBehaviour
         {
             //on les active
             _cell.SetActive(true);
+            StartCoroutine(_cell.GetComponent<GoldCellsScript>().FadeOut());
 
-            //puis on les pousse
-            if (_cell != null)
-            {
-                Rigidbody _rb = _cell.GetComponent<Rigidbody>();
-                if (_rb != null)
-                {
-                    Vector3 direction = (_cell.transform.position - transform.position).normalized;
-                    _rb.AddForce(direction * expelForce + (Vector3.up *expelForce), ForceMode.Impulse);
-                }
-            }
         }
     }
 }
