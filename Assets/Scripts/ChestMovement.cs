@@ -10,10 +10,15 @@ public class ChestMovement : MonoBehaviour
     void Update()
     {
         if (SceneARManager.INSTANCE.currentChest == null) return;
-        float moveHorizontal = joystick.Horizontal();
-        float moveVertical = joystick.Vertical();
+        float _moveHorizontal = joystick.Horizontal();
+        float _moveVertical = joystick.Vertical();
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        SceneARManager.INSTANCE.currentChest.transform.Translate(movement * speed * Time.deltaTime);
+        Vector3 _direction = new Vector3(_moveHorizontal, 0, _moveVertical);
+        //on s'adapte à l'utilisateur
+        _direction = Camera.main.transform.TransformDirection(_direction);
+        //tout en ignorant la verticalité
+        _direction.y = 0;
+
+        SceneARManager.INSTANCE.currentChest.transform.Translate(_direction * speed * Time.deltaTime);
     }
 }
