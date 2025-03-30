@@ -1715,8 +1715,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchoredPosition: {x: 0, y: -450}
+  m_SizeDelta: {x: 1125, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391908511
 MonoBehaviour:
@@ -1738,10 +1738,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Surface scanning
+  m_text: SCAN SURFACES
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 98e947087fae1cb47987bc5060a6a659, type: 2}
-  m_sharedMaterial: {fileID: 4512526056591653471, guid: 98e947087fae1cb47987bc5060a6a659,
+  m_fontAsset: {fileID: 11400000, guid: c733e6be207dd394ebec8517ad768670, type: 2}
+  m_sharedMaterial: {fileID: 1321306896045532813, guid: c733e6be207dd394ebec8517ad768670,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1766,8 +1766,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1873,7 +1873,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score :\n100
+  m_text: Score :\naucun
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 98e947087fae1cb47987bc5060a6a659, type: 2}
   m_sharedMaterial: {fileID: 4512526056591653471, guid: 98e947087fae1cb47987bc5060a6a659,
@@ -2337,9 +2337,9 @@ MonoBehaviour:
   scoreUI: {fileID: 829237248}
   timerButton: {fileID: 2113288369}
   restartButton: {fileID: 397023901}
-  delayBetweenSpawns: 2
-  minDistance: 1
-  maxDistance: 5
+  delayBetweenSpawns: 1.5
+  minDistance: 0.5
+  maxDistance: 2.5
   goldenOre: {fileID: 1937299990257502515, guid: 24076ac71bc8858418b7475dbb4eef3b,
     type: 3}
   collisionLayer:

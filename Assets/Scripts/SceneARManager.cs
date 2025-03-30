@@ -105,5 +105,6 @@ public class SceneARManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         foreach (GameObject _ui in arExperienceUIList) _ui.SetActive(true);
         CleanScene();
+        score = 0;
     }
 }
