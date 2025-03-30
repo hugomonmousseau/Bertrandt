@@ -17,22 +17,23 @@ public class CollectOre : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && SceneARManager.INSTANCE.spawnOres)
         {
-            DetectObjectAtTouch(Input.GetTouch(0).position);
-        }
+            Vector2 _touchPosition = Input.GetTouch(0).position;
+            List<ARRaycastHit> _hits = new List<ARRaycastHit>();
 
-        void DetectObjectAtTouch(Vector2 touchPosition)
-        {
-            Ray _ray = Camera.main.ScreenPointToRay(touchPosition);
-            RaycastHit _hit;
-
-            if (Physics.Raycast(_ray, out _hit))
+            if (arRaycastManager.Raycast(_touchPosition, _hits, TrackableType.PlaneWithinPolygon))
             {
-                if (_hit.collider.gameObject.layer == oreLayer)
+                Ray _ray = Camera.main.ScreenPointToRay(_touchPosition);
+                RaycastHit _hit;
+
+                if (Physics.Raycast(_ray, out _hit))
                 {
-                    _hit.collider.GetComponent<GoldOreScript>().Recolt();
-                    SceneARManager.INSTANCE.IncremanteScore();
+                    if (_hit.collider.gameObject.layer == oreLayer)
+                    {
+                        _hit.collider.GetComponent<GoldOreScript>().Recolt();
+                        SceneARManager.INSTANCE.IncremanteScore();
+                    }
                 }
             }
         }
