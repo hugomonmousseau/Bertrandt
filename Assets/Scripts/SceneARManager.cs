@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class SceneARManager : MonoBehaviour
 {
     public static SceneARManager INSTANCE;
     [HideInInspector] public GameObject currentChest;
+    private int score;
+
+    [Header("UI")]
     [SerializeField] GameObject scanSurfaceUI;
     [SerializeField] List<GameObject> arExperienceUIList;
+    [SerializeField] GameObject timerUI;
+    [SerializeField] GameObject scoreUI;
+    [SerializeField] private Button timerButton;
+    [SerializeField] private Button restartButton;
 
     [Header("Spawn golds")]
-    [SerializeField] private Button timerButton;
     [SerializeField] float delayBetweenSpawns = 1;
     [SerializeField] float minDistance = 1.0f;
     [SerializeField] float maxDistance = 5.0f;
@@ -25,6 +31,7 @@ public class SceneARManager : MonoBehaviour
     void Start()
     {
         timerButton.onClick.AddListener(StartOneMinuteTimer);
+        timerButton.onClick.AddListener(RestartScene);
     }
 
     public void DetectedSurface()
@@ -35,17 +42,30 @@ public class SceneARManager : MonoBehaviour
     }
     private void StartOneMinuteTimer()
     {
+        timerUI.SetActive(true);
+        foreach (GameObject _ui in arExperienceUIList) _ui.SetActive(false);
+        spawnOres = true;
+
         StartCoroutine(InstantiateGoldOre());
         StartCoroutine(OneMinuteTimer());
     }
+
+
+    //lance un chrono de 1 minute
     IEnumerator OneMinuteTimer()
     {
-        foreach (GameObject _ui in arExperienceUIList) _ui.SetActive(false);
         yield return new WaitForSeconds(60);
-        foreach (Transform child in transform) Destroy(child.gameObject);
-        foreach (GameObject _ui in arExperienceUIList) _ui.SetActive(true);
+        scoreUI.SetActive(true);
+        restartButton.gameObject.SetActive(true);
         spawnOres = false;
     }
+
+    private void CleanScene()
+    {
+        foreach (Transform child in transform) Destroy(child.gameObject);
+    }
+
+    //instancie les minerais
     IEnumerator InstantiateGoldOre()
     {
         (Vector3, Vector3) spawn = GetValidSpawnPosition();
@@ -53,10 +73,10 @@ public class SceneARManager : MonoBehaviour
         {
             Instantiate(goldenOre, spawn.Item1, Quaternion.Euler(spawn.Item2), transform);
         }
-        yield return new WaitForSeconds(delayBetweenSpawns);
+        yield return new WaitForSeconds(1);
         if (spawnOres) StartCoroutine(InstantiateGoldOre());
     }
-
+    //retourne une position et une rotation valide en moins de 100 essais
     private (Vector3, Vector3) GetValidSpawnPosition()
     {
         int maxAttempts = 100;
@@ -72,5 +92,20 @@ public class SceneARManager : MonoBehaviour
             }
         }
         return (Vector3.zero, Vector3.zero); // Retourne zéro si aucune position valide n'est trouvée après plusieurs tentatives
+    }
+
+    public void IncremanteScore()
+    {
+        score++;
+        scoreUI.GetComponentInChildren<TextMeshProUGUI>().text = "Score:\n" + score.ToString();
+    }
+
+    private void RestartScene()
+    {
+        timerUI.SetActive(false);
+        scoreUI.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        foreach (GameObject _ui in arExperienceUIList) _ui.SetActive(true);
+        CleanScene();
     }
 }

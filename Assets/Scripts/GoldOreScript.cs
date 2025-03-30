@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldExpulsion : MonoBehaviour
+public class GoldOreScript : MonoBehaviour
 {
     [SerializeField] List<GameObject> oreCells;
-    [SerializeField] float expelForce = 10f;
     [SerializeField] GameObject originalOre;
 
     [ContextMenu("Expel")]
-    public void Expel()
+    public void Recolt()
     {
-        //on commence par cacher l'original
         originalOre.SetActive(false);
 
         foreach (GameObject _cell in oreCells)
