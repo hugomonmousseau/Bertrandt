@@ -23,8 +23,10 @@ public class CollectOre : MonoBehaviour
 
             if (arRaycastManager.Raycast(_touchPosition, _hits, TrackableType.PlaneWithinPolygon))
             {
+
                 Ray _ray = Camera.main.ScreenPointToRay(_touchPosition);
                 RaycastHit _hit;
+
 
                 if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, oreLayer))
                 {

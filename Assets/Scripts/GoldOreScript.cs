@@ -17,7 +17,7 @@ public class GoldOreScript : MonoBehaviour
     [ContextMenu("Expel")]
     public void Recolt()
     {
-        Destroy(gameObject);
+        
         GetComponent<BoxCollider>().enabled = false;
         originalOre.SetActive(false);
         foreach (GameObject _cell in oreCells)
