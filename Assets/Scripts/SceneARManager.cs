@@ -71,7 +71,7 @@ public class SceneARManager : MonoBehaviour
         {
             Instantiate(goldenOre, spawn.Item1, Quaternion.Euler(spawn.Item2), transform);
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(delayBetweenSpawns);
         if (spawnOres) StartCoroutine(InstantiateGoldOre());
     }
     //retourne une position et une rotation valide en moins de 100 essais
