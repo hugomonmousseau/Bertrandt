@@ -9,7 +9,6 @@ public class CollectOre : MonoBehaviour
 {
     [SerializeField] LayerMask oreLayer;
     private ARRaycastManager arRaycastManager;
-
     void Start()
     {
         arRaycastManager = GetComponent<ARRaycastManager>();
@@ -27,7 +26,7 @@ public class CollectOre : MonoBehaviour
                 Ray _ray = Camera.main.ScreenPointToRay(_touchPosition);
                 RaycastHit _hit;
 
-                if (Physics.Raycast(_ray, out _hit))
+                if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, oreLayer))
                 {
                     if (_hit.collider.gameObject.layer == oreLayer)
                     {

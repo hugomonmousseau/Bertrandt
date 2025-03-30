@@ -18,7 +18,7 @@ public class GoldOreScript : MonoBehaviour
     public void Recolt()
     {
         Destroy(gameObject);
-        /*
+        GetComponent<BoxCollider>().enabled = false;
         originalOre.SetActive(false);
         foreach (GameObject _cell in oreCells)
         {
@@ -28,6 +28,6 @@ public class GoldOreScript : MonoBehaviour
 
         }
         anim.SetTrigger("Expel");
-        */
+        
     }
 }
