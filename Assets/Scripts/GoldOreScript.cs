@@ -17,6 +17,8 @@ public class GoldOreScript : MonoBehaviour
     [ContextMenu("Expel")]
     public void Recolt()
     {
+        gameObject.SetActive(false);
+        /*
         originalOre.SetActive(false);
         anim.SetTrigger("Expel");
         foreach (GameObject _cell in oreCells)
@@ -26,5 +28,6 @@ public class GoldOreScript : MonoBehaviour
             StartCoroutine(_cell.GetComponent<GoldCellsScript>().FadeOut());
 
         }
+        */
     }
 }

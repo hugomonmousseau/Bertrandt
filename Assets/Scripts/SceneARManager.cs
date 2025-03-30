@@ -31,7 +31,7 @@ public class SceneARManager : MonoBehaviour
     void Start()
     {
         timerButton.onClick.AddListener(StartOneMinuteTimer);
-        timerButton.onClick.AddListener(RestartScene);
+        restartButton.onClick.AddListener(RestartScene);
     }
 
     public void DetectedSurface()
