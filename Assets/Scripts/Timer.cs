@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
             {
                 timeRemaining = 0;
                 timerIsRunning = false;
+                SceneARManager.INSTANCE.EndTimer();
                 DisplayTime(timeRemaining);
             }
             yield return null;
@@ -32,8 +33,6 @@ public class Timer : MonoBehaviour
 
     void DisplayTime(float timeToDisplay)
     {
-        timeToDisplay += 1; // Pour afficher 1:00 au lieu de 0:59 à la fin
-
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 

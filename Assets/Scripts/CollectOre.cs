@@ -17,7 +17,7 @@ public class CollectOre : MonoBehaviour
 
     void Update()
     {
-        if (!SceneARManager.INSTANCE.spawnOres) return; // on ne peut prendre les minerais deja present apres la minute passée
+        //if (!SceneARManager.INSTANCE.spawnOres) return; // on ne peut prendre les minerais deja present apres la minute passée
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);

@@ -47,15 +47,12 @@ public class SceneARManager : MonoBehaviour
         spawnOres = true;
 
         StartCoroutine(InstantiateGoldOre());
-        StartCoroutine(OneMinuteTimer());
+        StartCoroutine(GetComponent<Timer>().RunTimer());
     }
 
 
-    //lance un chrono de 1 minute
-    IEnumerator OneMinuteTimer()
+    public void EndTimer()
     {
-        StartCoroutine(GetComponent<Timer>().RunTimer());
-        yield return new WaitForSeconds(60);
         scoreUI.SetActive(true);
         restartButton.gameObject.SetActive(true);
         spawnOres = false;
