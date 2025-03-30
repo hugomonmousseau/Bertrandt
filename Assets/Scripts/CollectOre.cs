@@ -20,19 +20,19 @@ public class CollectOre : MonoBehaviour
         if (!SceneARManager.INSTANCE.spawnOres) return; // on ne peut prendre les minerais deja present apres la minute passée
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            Touch _touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began)
+            if (_touch.phase == TouchPhase.Began)
             {
-                List<ARRaycastHit> hits = new List<ARRaycastHit>();
-                if (arRaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon))
+                List<ARRaycastHit> _hits = new List<ARRaycastHit>();
+                if (arRaycastManager.Raycast(_touch.position, _hits, TrackableType.PlaneWithinPolygon))
                 {
-                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
-                    RaycastHit hit;
+                    Ray _ray = Camera.main.ScreenPointToRay(_touch.position);
+                    RaycastHit _hit;
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, oreLayer))
+                    if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, oreLayer))
                     {
-                        hit.collider.GetComponentInParent<GoldOreScript>().Recolt();
+                        _hit.collider.gameObject.GetComponentInParent<GoldOreScript>().Recolt();
                         SceneARManager.INSTANCE.IncremanteScore();
                     }
                 }

@@ -77,16 +77,16 @@ public class SceneARManager : MonoBehaviour
     //retourne une position et une rotation valide en moins de 100 essais
     private (Vector3, Vector3) GetValidSpawnPosition()
     {
-        int maxAttempts = 100;
-        for (int attempt = 0; attempt < maxAttempts; attempt++)
+        int _maxAttempts = 100;
+        for (int _attempt = 0; _attempt < _maxAttempts; _attempt++)
         {
-            Vector2 randomDirection = Random.insideUnitCircle.normalized;
-            float randomDistance = Random.Range(minDistance, maxDistance);
-            Vector3 potentialPosition = currentChest.transform.position + new Vector3(randomDirection.x, 0, randomDirection.y) * randomDistance;
-            Vector3 potentialRotation = new Vector3(0, Random.Range(-45, 45), 0);
-            if (!Physics.CheckBox(potentialPosition, goldenOre.GetComponentInChildren<BoxCollider>().size / 2, Quaternion.Euler(potentialRotation), collisionLayer))
+            Vector2 _randomDirection = Random.insideUnitCircle.normalized;
+            float _randomDistance = Random.Range(minDistance, maxDistance);
+            Vector3 _potentialPosition = currentChest.transform.position + new Vector3(_randomDirection.x, 0, _randomDirection.y) * _randomDistance;
+            Vector3 _potentialRotation = new Vector3(0, Random.Range(-45, 45), 0);
+            if (!Physics.CheckBox(_potentialPosition, goldenOre.GetComponentInChildren<BoxCollider>().size / 2, Quaternion.Euler(_potentialRotation), collisionLayer))
             {
-                return (potentialPosition , potentialRotation);
+                return (_potentialPosition , _potentialRotation);
             }
         }
         return (Vector3.zero, Vector3.zero); // Retourne zéro si aucune position valide n'est trouvée après plusieurs tentatives
