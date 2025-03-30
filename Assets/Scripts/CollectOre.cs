@@ -1,40 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
 
 public class CollectOre : MonoBehaviour
 {
-    [SerializeField] LayerMask oreLayer;
+    public Button destroyOreButton;
     private ARRaycastManager arRaycastManager;
     void Start()
     {
         arRaycastManager = GetComponent<ARRaycastManager>();
+        destroyOreButton.onClick.AddListener(CollectGold);
     }
 
-    void Update()
+
+
+    void CollectGold()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && SceneARManager.INSTANCE.spawnOres)
+        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
         {
-            Vector2 _touchPosition = Input.GetTouch(0).position;
-            List<ARRaycastHit> _hits = new List<ARRaycastHit>();
-
-            if (arRaycastManager.Raycast(_touchPosition, _hits, TrackableType.PlaneWithinPolygon))
+            if(hit.collider != null)
             {
-
-                Ray _ray = Camera.main.ScreenPointToRay(_touchPosition);
-                RaycastHit _hit;
-
-
-                if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, oreLayer))
+                if(hit.collider != SceneARManager.INSTANCE.currentChest)
                 {
-                    if (_hit.collider.gameObject.layer == oreLayer)
-                    {
-                        _hit.collider.GetComponent<GoldOreScript>().Recolt();
-                        SceneARManager.INSTANCE.IncremanteScore();
-                    }
+                    hit.collider.GetComponent<GoldOreScript>().Recolt();
+                    SceneARManager.INSTANCE.IncremanteScore();
                 }
             }
         }
