@@ -32,7 +32,7 @@ public class CollectOre : MonoBehaviour
 
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity, oreLayer))
                     {
-                        hit.collider.GetComponent<GoldOreScript>().Recolt();
+                        hit.collider.GetComponentInParent<GoldOreScript>().Recolt();
                         SceneARManager.INSTANCE.IncremanteScore();
                     }
                 }

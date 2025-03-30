@@ -6,12 +6,19 @@ public class GoldOreScript : MonoBehaviour
 {
     [SerializeField] List<GameObject> oreCells;
     [SerializeField] GameObject originalOre;
+    private Animator anim;
+
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     [ContextMenu("Expel")]
     public void Recolt()
     {
         originalOre.SetActive(false);
-
+        anim.SetTrigger("Expel");
         foreach (GameObject _cell in oreCells)
         {
             //on les active
