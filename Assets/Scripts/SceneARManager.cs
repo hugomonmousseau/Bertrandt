@@ -54,6 +54,7 @@ public class SceneARManager : MonoBehaviour
     //lance un chrono de 1 minute
     IEnumerator OneMinuteTimer()
     {
+        StartCoroutine(GetComponent<Timer>().RunTimer());
         yield return new WaitForSeconds(60);
         scoreUI.SetActive(true);
         restartButton.gameObject.SetActive(true);
