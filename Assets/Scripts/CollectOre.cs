@@ -17,7 +17,8 @@ public class CollectOre : MonoBehaviour
 
     void Update()
     {
-        //if (!SceneARManager.INSTANCE.spawnOres) return; // on ne peut prendre les minerais deja present apres la minute passée
+        if (!SceneARManager.INSTANCE.spawnOres) return; // on ne peut prendre les minerais deja present apres la minute passée
+        /*
         if (Input.touchCount > 0)
         {
             Touch _touch = Input.GetTouch(0);
@@ -34,7 +35,28 @@ public class CollectOre : MonoBehaviour
                     {
                         _hit.collider.gameObject.GetComponentInParent<GoldOreScript>().Recolt();
                         SceneARManager.INSTANCE.IncremanteScore();
+
                     }
+                }
+            }
+        }
+        */
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            DetectObjectAtTouch(Input.GetTouch(0).position);
+        }
+
+        void DetectObjectAtTouch(Vector2 touchPosition)
+        {
+            Ray _ray = Camera.main.ScreenPointToRay(touchPosition);
+            RaycastHit _hit;
+
+            if (Physics.Raycast(_ray, out _hit))
+            {
+                if (_hit.collider.gameObject.layer == oreLayer)
+                {
+                    _hit.collider.gameObject.GetComponentInParent<GoldOreScript>().Recolt();
+                    SceneARManager.INSTANCE.IncremanteScore();
                 }
             }
         }

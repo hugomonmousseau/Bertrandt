@@ -7,12 +7,10 @@ using UnityEngine.XR.ARSubsystems;
 public class ChestIntantiator : MonoBehaviour
 {
     [SerializeField] GameObject chest;
-    private ARPlaneManager arPlaneManager;
     private ARRaycastManager arRaycastManager;
 
     private void Start()
     {
-        arPlaneManager = GetComponent<ARPlaneManager>();
         arRaycastManager = GetComponent<ARRaycastManager>();
     }
 
