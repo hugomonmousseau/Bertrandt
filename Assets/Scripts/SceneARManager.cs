@@ -47,7 +47,7 @@ public class SceneARManager : MonoBehaviour
         spawnOres = true;
 
         StartCoroutine(InstantiateGoldOre());
-        StartCoroutine(GetComponent<Timer>().RunTimer());
+        StartCoroutine(GetComponent<Timer>().RunTimer(60));
     }
 
 

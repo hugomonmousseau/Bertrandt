@@ -17,7 +17,7 @@ public class CollectOre : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && SceneARManager.INSTANCE.spawnOres)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             DetectObjectAtTouch(Input.GetTouch(0).position);
         }

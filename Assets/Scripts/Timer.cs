@@ -7,25 +7,24 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
-    private float timeRemaining = 60.0f;
     private bool timerIsRunning = false;
 
-    public IEnumerator RunTimer()
+    public IEnumerator RunTimer(float _timeRemaining)
     {
         timerIsRunning = true;
         while (timerIsRunning)
         {
-            if (timeRemaining > 0)
+            if (_timeRemaining > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                _timeRemaining -= Time.deltaTime;
+                DisplayTime(_timeRemaining);
             }
             else
             {
-                timeRemaining = 0;
+                _timeRemaining = 0;
                 timerIsRunning = false;
                 SceneARManager.INSTANCE.EndTimer();
-                DisplayTime(timeRemaining);
+                DisplayTime(_timeRemaining);
             }
             yield return null;
         }
