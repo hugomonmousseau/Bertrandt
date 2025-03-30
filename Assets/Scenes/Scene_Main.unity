@@ -1662,6 +1662,7 @@ GameObject:
   - component: {fileID: 1203532267}
   - component: {fileID: 1203532266}
   - component: {fileID: 1203532271}
+  - component: {fileID: 1203532272}
   m_Layer: 0
   m_Name: XR Origin (Mobile AR)
   m_TagString: Untagged
@@ -1681,8 +1682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RaycastPrefab: {fileID: 367139817362700391, guid: cbf14b85e09f2fa429434684f79d2856,
-    type: 3}
+  m_RaycastPrefab: {fileID: 0}
 --- !u!114 &1203532267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1758,6 +1758,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chest: {fileID: 3058385210855726510, guid: af760a5334607094a951f48d4c7c4991, type: 3}
+--- !u!114 &1203532272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203532265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72897866fade4749863b054f942f2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  o: {fileID: 1937299990257502515, guid: 24076ac71bc8858418b7475dbb4eef3b, type: 3}
 --- !u!1 &1287992032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2180,7 +2193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1670171422
 MonoBehaviour:
   m_ObjectHideFlags: 0
