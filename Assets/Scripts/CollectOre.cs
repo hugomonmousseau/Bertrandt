@@ -31,7 +31,7 @@ public class CollectOre : MonoBehaviour
             {
                 if (_hit.collider.gameObject.layer == oreLayer)
                 {
-                    _hit.collider.gameObject.GetComponentInParent<GoldOreScript>().Recolt();
+                    _hit.collider.GetComponent<GoldOreScript>().Recolt();
                     SceneARManager.INSTANCE.IncremanteScore();
                 }
             }

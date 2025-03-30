@@ -17,6 +17,8 @@ public class GoldOreScript : MonoBehaviour
     [ContextMenu("Expel")]
     public void Recolt()
     {
+        Destroy(gameObject);
+        /*
         originalOre.SetActive(false);
         foreach (GameObject _cell in oreCells)
         {
@@ -26,6 +28,6 @@ public class GoldOreScript : MonoBehaviour
 
         }
         anim.SetTrigger("Expel");
-
+        */
     }
 }
