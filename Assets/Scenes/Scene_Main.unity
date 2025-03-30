@@ -2334,7 +2334,7 @@ MonoBehaviour:
   - {fileID: 2113288367}
   - {fileID: 553477532}
   timerUI: {fileID: 1101522477}
-  scoreUI: {fileID: 0}
+  scoreUI: {fileID: 829237248}
   timerButton: {fileID: 2113288369}
   restartButton: {fileID: 397023901}
   delayBetweenSpawns: 2
