@@ -1587,6 +1587,7 @@ GameObject:
   - component: {fileID: 1203532267}
   - component: {fileID: 1203532266}
   - component: {fileID: 1203532271}
+  - component: {fileID: 1203532272}
   m_Layer: 0
   m_Name: XR Origin (Mobile AR)
   m_TagString: Untagged
@@ -1682,6 +1683,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chest: {fileID: 3058385210855726510, guid: af760a5334607094a951f48d4c7c4991, type: 3}
+--- !u!114 &1203532272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203532265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e9d90cd8b0f3e448786cae552e6c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oreLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &1287992032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2179,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2431,7 +2447,6 @@ GameObject:
   - component: {fileID: 1968642778}
   - component: {fileID: 1968642781}
   - component: {fileID: 1968642782}
-  - component: {fileID: 1968642783}
   m_Layer: 0
   m_Name: Scene Manager
   m_TagString: Untagged
@@ -2525,18 +2540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 2031233602}
---- !u!114 &1968642783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968642777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e9d90cd8b0f3e448786cae552e6c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1977041096
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,10 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.InputSystem;
 
 
 public class CollectOre : MonoBehaviour
 {
+    private TouchControls controls;
+    private bool isPressed;
+    [SerializeField] LayerMask oreLayer;
+
+    private void Awake()
+    {
+        controls = new TouchControls();
+
+        controls.control.touch.performed += _ => isPressed = true;
+        controls.control.touch.canceled += _ => isPressed = false;
+    }
     private ARRaycastManager arRaycastManager;
     void Start()
     {
@@ -16,9 +28,10 @@ public class CollectOre : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && SceneARManager.INSTANCE.spawnOres)
+
+        if (isPressed && SceneARManager.INSTANCE.spawnOres)
         {
-            Vector2 touchPosition = Input.GetTouch(0).position;
+            var touchPosition = Pointer.current.position.ReadValue();
             List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
             if (arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
@@ -27,15 +40,26 @@ public class CollectOre : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(touchPosition);
                 RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit,Mathf.Infinity, oreLayer))
                 {
-                    if (hit.collider.gameObject != SceneARManager.INSTANCE.spawnOres)
+                    if (hit.collider.gameObject != SceneARManager.INSTANCE.currentChest)
                     {
+                        print("hi");
                         hit.collider.gameObject.GetComponent<GoldOreScript>().Recolt();
                         SceneARManager.INSTANCE.IncremanteScore();
                     }
                 }
             }
         }
+        
+    }
+
+    private void OnEnable()
+    {
+        controls.control.Enable();
+    }
+    private void OnDisable()
+    {
+        controls.control.Disable();
     }
 }
