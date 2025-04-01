@@ -8,31 +8,32 @@ using UnityEngine.XR.ARSubsystems;
 
 public class CollectOre : MonoBehaviour
 {
-    public Button destroyOreButton;
     private ARRaycastManager arRaycastManager;
     void Start()
     {
         arRaycastManager = GetComponent<ARRaycastManager>();
-        destroyOreButton.onClick.AddListener(CollectGold);
     }
 
-
-
-    void CollectGold()
+    private void Update()
     {
-        Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
-
-        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && SceneARManager.INSTANCE.spawnOres)
         {
-            if(hit.collider != null)
+            Vector2 touchPosition = Input.GetTouch(0).position;
+            List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
+            if (arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
             {
-                if(hit.collider != SceneARManager.INSTANCE.currentChest)
+                Pose hitPose = hits[0].pose;
+                Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    hit.collider.GetComponent<GoldOreScript>().Recolt();
-                    SceneARManager.INSTANCE.IncremanteScore();
+                    if (hit.collider.gameObject != SceneARManager.INSTANCE.spawnOres)
+                    {
+                        hit.collider.gameObject.GetComponent<GoldOreScript>().Recolt();
+                        SceneARManager.INSTANCE.IncremanteScore();
+                    }
                 }
             }
         }

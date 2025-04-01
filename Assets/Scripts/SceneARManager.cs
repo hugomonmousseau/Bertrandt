@@ -45,7 +45,6 @@ public class SceneARManager : MonoBehaviour
         timerUI.SetActive(true);
         foreach (GameObject _ui in arExperienceUIList) _ui.SetActive(false);
         spawnOres = true;
-        GetComponent<CollectOre>().destroyOreButton.gameObject.SetActive(true);
         StartCoroutine(InstantiateGoldOre());
         StartCoroutine(GetComponent<Timer>().RunTimer(60));
     }
@@ -56,7 +55,6 @@ public class SceneARManager : MonoBehaviour
         scoreUI.SetActive(true);
         restartButton.gameObject.SetActive(true);
         spawnOres = false;
-        GetComponent<CollectOre>().destroyOreButton.gameObject.SetActive(false);
     }
 
     private void CleanScene()
