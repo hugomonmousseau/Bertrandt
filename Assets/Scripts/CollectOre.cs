@@ -32,22 +32,15 @@ public class CollectOre : MonoBehaviour
         if (isPressed && SceneARManager.INSTANCE.spawnOres)
         {
             var touchPosition = Pointer.current.position.ReadValue();
-            List<ARRaycastHit> hits = new List<ARRaycastHit>();
+            Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+            RaycastHit hit;
 
-            if (arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, oreLayer))
             {
-                Pose hitPose = hits[0].pose;
-                Ray ray = Camera.main.ScreenPointToRay(touchPosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit,Mathf.Infinity, oreLayer))
+                if (hit.collider.gameObject != SceneARManager.INSTANCE.currentChest)
                 {
-                    if (hit.collider.gameObject != SceneARManager.INSTANCE.currentChest)
-                    {
-                        print("hi");
-                        hit.collider.gameObject.GetComponent<GoldOreScript>().Recolt();
-                        SceneARManager.INSTANCE.IncremanteScore();
-                    }
+                    hit.collider.gameObject.GetComponent<GoldOreScript>().Recolt();
+                    SceneARManager.INSTANCE.IncremanteScore();
                 }
             }
         }
