@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 public class SceneARManager : MonoBehaviour
 {
     public static SceneARManager INSTANCE;
     [HideInInspector] public GameObject currentChest;
     private int score;
+    [SerializeField] ARRaycastManager arRaycastManager;
 
     [Header("UI")]
     [SerializeField] GameObject scanSurfaceUI;
@@ -83,10 +86,16 @@ public class SceneARManager : MonoBehaviour
             float _randomDistance = Random.Range(minDistance, maxDistance);
             Vector3 _potentialPosition = currentChest.transform.position + new Vector3(_randomDirection.x, 0, _randomDirection.y) * _randomDistance;
             Vector3 _potentialRotation = new Vector3(0, Random.Range(-45, 45), 0);
-            if (!Physics.CheckBox(_potentialPosition, goldenOre.GetComponentInChildren<BoxCollider>().size / 2, Quaternion.Euler(_potentialRotation), collisionLayer))
+
+            List<ARRaycastHit> hits = new List<ARRaycastHit>();
+            if (arRaycastManager.Raycast(new Vector2(_potentialPosition.x, _potentialPosition.z), hits, TrackableType.PlaneWithinPolygon))
             {
-                return (_potentialPosition , _potentialRotation);
+                if (!Physics.CheckBox(_potentialPosition, goldenOre.GetComponentInChildren<BoxCollider>().size / 2, Quaternion.Euler(_potentialRotation), collisionLayer))
+                {
+                    return (_potentialPosition, _potentialRotation);
+                }
             }
+                
         }
         return (Vector3.zero, Vector3.zero); // Retourne zéro si aucune position valide n'est trouvée après plusieurs tentatives
     }
